@@ -1,24 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"time"
+)
 
 func main() {
 	var (
-		firstName, lastName, email string
-		number, birth              int
+		firstName, lastName, email, number, birth string
 	)
 	fmt.Print("First name: ")
-	fmt.Scanf("%s", &firstName)
+	fmt.Scanln(&firstName)
 
 	fmt.Print("Last name: ")
-	fmt.Scanf("%s", &lastName)
+	fmt.Scanln(&lastName)
 
 	fmt.Print("Phone no: ")
-	fmt.Scanf("%d", &number)
+	fmt.Scanln(&number)
 
 	fmt.Print("Email: ")
-	fmt.Scanf("%s", &email)
+	fmt.Scanln(&email)
 
 	fmt.Print("Date of birth: ")
-	fmt.Scanf("%s", &birth)
+	fmt.Scanln(&birth)
+	str := birth
+	_, err := time.Parse(time.DateOnly, str)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("SAVED!")
 }
